@@ -5,6 +5,8 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// hello!
+
 export const metadata: Metadata = {
   title: "Timeless",
   description: "DDD Ecommerce Website",
