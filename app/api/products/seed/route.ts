@@ -1,0 +1,23 @@
+// import data from "@/lib/data";
+// // import dbConnect from "@/lib/dbConnect";
+// import UserModel from "@/lib/models/UserModel";
+// import { NextRequest, NextResponse } from "next/server";
+
+// export const GET = async (request: NextRequest) => {
+//     const {users, products} = data
+//     await dbConnect()
+//     console.log('______________________________________________________________________')
+//     // await UserModel.destroy({
+//     //     where: {},
+//     //     truncate: true
+//     // })
+//     await UserModel.bulkCreate(users)
+
+//     // await UserModel.destroy()
+//     // await UserModel.bulkCreate(products)
+
+//     // console.log('seeded successfully')
+//     return NextResponse.json({
+//         message: 'seeded successfully', users, products,
+//     })
+// }
