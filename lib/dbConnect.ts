@@ -1,5 +1,7 @@
 // import sequelize from "./postgres";
 
+import { Truculenta } from "next/font/google";
+
 
 // async function dbConnect() {
 //     try{ 
@@ -12,6 +14,10 @@
 // }
 
 // export default dbConnect
+
+export default async function dbConnect(){
+    return true
+}
 
 const myClient = require('./postgres.ts');
 const express = require('express');

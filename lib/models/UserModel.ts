@@ -8,9 +8,9 @@
 //     password: {type: Sequelize.STRING, allowNull: false},
 //     isAdmin: {type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false},
 // },
-// //{ timestamps: true }
+//{ timestamps: true }
 // )
 
-// const UserModel = sequelize.models.User || sequelize.model('UserSchema')
+// const UserModel = sequelize.models?.User || sequelize.model('UserSchema')
 
 // export default UserModel

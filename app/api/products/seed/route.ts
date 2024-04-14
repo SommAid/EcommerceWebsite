@@ -1,5 +1,5 @@
 // import data from "@/lib/data";
-// // import dbConnect from "@/lib/dbConnect";
+// import dbConnect from "@/lib/dbConnect";
 // import UserModel from "@/lib/models/UserModel";
 // import { NextRequest, NextResponse } from "next/server";
 
