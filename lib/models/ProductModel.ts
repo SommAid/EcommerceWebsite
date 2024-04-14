@@ -1,4 +1,4 @@
-// import sequelize from "../postgres";
+import sequelize from "../postgres";
 // const {Sequelize, Model} = require('sequilize');
 
 // const productSchema = sequelize.define('productSchema',{
@@ -19,25 +19,25 @@
 // }
 // )
 
-// const ProductModel =
-//     sequelize.models.Product || sequelize.model('productSchema')
+const ProductModel =
+    sequelize.models.Product// || sequelize.model('productSchema')
 
-// export default ProductModel
+export default ProductModel
 
-// export type Product = {
-//     _id?: string
-//     name: string
-//     slug: string
-//     image: string
-//     banner?: string
-//     price: number
-//     brand: string
-//     description: string
-//     category: string 
-//     rating: number
-//     numReviews: number
-//     countInStock: number
-//     colors?: []
-//     sizes?: []
-// }
+export type Product = {
+    _id?: string
+    name: string
+    slug: string
+    image: string
+    banner?: string
+    price: number
+    brand: string
+    description: string
+    category: string 
+    rating: number
+    numReviews: number
+    countInStock: number
+    colors?: []
+    sizes?: []
+}
 
