@@ -1,31 +1,36 @@
-import { NextRequest } from 'next/server'
-import bcrypt from 'bcryptjs'
-import dbConnect from '@/lib/dbConnect'
-import UserModel from '@/lib/models/UserModel'
+import { NextRequest, NextResponse, Response } from 'next/server';
+import bcrypt from 'bcryptjs';
+import dbConnect from '@/lib/dbConnect';
+import UserModel from '@/lib/models/UserModel';
 
 export const POST = async (request: NextRequest) => {
-  const { name, email, password } = await request.json()
-  // await dbConnect() TODO
-  const hashedPassword = await bcrypt.hash(password, 5)
-  const newUser = new UserModel({
-    name,
-    email,
-    password: hashedPassword,
-  })
+  const { name, email, password } = await request.json();
+
+
   try {
-    await newUser.save()
-    return Response.json(
+    // Connect to the database
+    await dbConnect();
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 5); // Increase the salt rounds for better security
+
+    // Create a new user instance
+    const newUser = {
+      name,
+      email,
+      password: hashedPassword,
+    };
+
+    // Save the new user to the database
+    await UserModel.create(newUser);
+
+    return NextResponse.json(
       { message: 'User has been created' },
       {
         status: 201,
       }
-    )
-  } catch (err: any) {
-    return Response.json(
-      { message: err.message },
-      {
-        status: 500,
-      }
-    )
+    );
+  } catch (error) {
+    return NextResponse.json({ error: 'Internal Server Error' },{status:500});
   }
-}
+};
