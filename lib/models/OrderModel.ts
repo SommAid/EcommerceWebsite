@@ -1,4 +1,4 @@
-// import sequelize from "../postgres";
+//import sequelize from "../postgres";
 // const {Sequelize, Model} = require('sequilize');
 
 import sequelize from "../postgres"

@@ -9,7 +9,7 @@ export const PUT = auth(async (req) => {
   }
   const { user } = req.auth
   const { name, email, password } = await req.json()
-  // await dbConnect() TODO
+  await dbConnect() TODO
   try {
     const dbUser = await UserModel.findById(user._id)
     if (!dbUser) {

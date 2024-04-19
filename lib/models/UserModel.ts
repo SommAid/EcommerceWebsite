@@ -1,4 +1,4 @@
-const client = require('../postgres')
+const client = require('../postgres');
 import { json } from 'sequelize';
 import dbConnect from '../dbConnect';
 // Define the User model module
