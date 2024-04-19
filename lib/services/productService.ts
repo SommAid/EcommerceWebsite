@@ -1,14 +1,22 @@
-// import { cache } from "react";
-// import dbConnect from "../dbConnect";
-// import ProductModel, { Product } from "../models/ProductModel";
+import { cache } from "react";
+import dbConnect from "../dbConnect";
+import ProductModel, { Product } from "../models/ProductModel";
 
-// export const revalidate = 3600
+export const revalidate = 3600
 
-// const getLatest = cache(async () => {
-//     await dbConnect()
-//     const products = await ProductModel.findAll({}).sort({_id: -1}).limit(4).lean()
-//     return products as Product[]
-// })
+const getLatest = cache(async () => {
+    await dbConnect()
+    const products = await ProductModel.findAll();
+    const plainProducts = products.map((product) => product.get({ plain: true }));
+    return plainProducts
+})
+
+const productService = {
+  getLatest
+}
+
+export default productService
+
 
 // const getFeatured = cache(async () => {
 //     await dbConnect()

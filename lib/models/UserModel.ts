@@ -1,6 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import sequelize from '../postgres';
-import {v4 as uuidv4} from 'uuid'
 
 // Define the User model
 const UserModel = sequelize.define('User', {
