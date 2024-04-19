@@ -1,4 +1,6 @@
 import bcrypt from 'bcryptjs'
+import {v4 as uuidv4} from 'uuid'
+
 
 // const fetchDataFromDB = cache(async () => {
 //     try{
@@ -27,21 +29,22 @@ import bcrypt from 'bcryptjs'
 //     });
 
 const data = {
-    users:[{
-        name: 'example admin',
-        email: 'exampleAdmin@example.com',
-        password: bcrypt.hashSync('123456'),
-        isAdmin: true,
-    },
-    {
-        name: 'example user',
-        email: 'exampleUser@example.com',
-        password: bcrypt.hashSync('123456'),
-        isAdmin: false,
-    }
-],
+    users:[
+        {
+            name: 'example admin',
+            email: 'exampleAdmin@example.com',
+            password: bcrypt.hashSync('123456'),
+            isAdmin: true,
+        },
+        {
+            name: 'example user',
+            email: 'exampleUser@example.com',
+            password: bcrypt.hashSync('123456'),
+            isAdmin: false,
+        }
+    ],
 
-    products: //fetchDataFromDB()
+    products:
     [
         {
             name: 'Shirt shirt',

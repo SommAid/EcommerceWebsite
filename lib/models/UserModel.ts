@@ -1,12 +1,9 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import sequelize from '../postgres';
+import {v4 as uuidv4} from 'uuid'
 
 // Define the User model
 const UserModel = sequelize.define('User', {
-  _id: {
-    type: DataTypes.UUID, // Assuming _id is a UUID
-    primaryKey: true,
-  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -31,15 +28,21 @@ const UserModel = sequelize.define('User', {
 // Sync the model with the database (create the table if it doesn't exist)
 (async () => {
   try {
-    await sequelize.sync();
+    await UserModel.sync();
     console.log('User model synchronized with the database.');
   } catch (error) {
     console.error('Error syncing User model:', error);
   }
 })();
 
-export default UserModel;
+export default UserModel
 
+export type User = {
+  _id: string
+  name: string
+  email: string
+  isAdmin: boolean
+}
 
 // import sequelize from "../postgres";
 // const {  Sequelize } = require('sequelize');
