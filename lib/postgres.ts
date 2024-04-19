@@ -10,15 +10,15 @@ const sequelize = new Sequelize("ddd_proj", "postgres", "293367", {
 
 export default sequelize
 
-const {Client} = require('pg')
+// const {Client} = require('pg')
 
-const client = new Client({
-    host: "localhost",
-    user: "postgres",
-    port: 5432,
-    password: "pass",
-    database: "ddd_proj"
-})
+// const client = new Client({
+//     host: "localhost",
+//     user: "postgres",
+//     port: 5432,
+//     password: "pass",
+//     database: "ddd_proj"
+// })
 
-module.exports = client
+// module.exports = client
 
