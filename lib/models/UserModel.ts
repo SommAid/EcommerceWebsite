@@ -1,6 +1,5 @@
 const client = require('../postgres');
-import { json } from 'sequelize';
-import dbConnect from '../dbConnect';
+
 // Define the User model module
 const UserModel = {
     // Method to fetch all users
@@ -16,9 +15,9 @@ const UserModel = {
     },
 
     // Method to find a user by customer_id
-    findById: async (customerId) => {
+    findOne: async (email,password) => {
         try {
-            const query = 'SELECT * FROM customers WHERE customer_id = $1';
+            const query = 'SELECT * FROM customers WHERE email = $1 and password = $2';
             const result = await client.query(query, [customerId]);
             return result.rows[0];
         } catch (error) {

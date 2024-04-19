@@ -1,8 +1,9 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import dbConnect from "./dbConnect";
-// import UserModel from "./models/UserModel";
+import UserModel from "./models/UserModel";
 import bcrypt from 'bcryptjs'
 import NextAuth from "next-auth";
+const client = require('./postgres');
 
 export const config = {
     providers: [

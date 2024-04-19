@@ -1,4 +1,4 @@
-import * as pg from 'pg';
+
 // import { Sequelize } from "sequelize";
 
 // const sequelize = new Sequelize("ddd_proj", "postgres", "293367", {
