@@ -15,10 +15,11 @@ const UserModel = {
     },
 
     // Method to find a user by customer_id
-    findOne: async (email,password) => {
+    findOne: async (email) => {
         try {
-            const query = 'SELECT * FROM customers WHERE email = $1 and password = $2';
-            const result = await client.query(query, [customerId]);
+            const query = 'SELECT * FROM customers WHERE email = $1';
+            const result = await client.query(query, [email['email']]);
+            console.log(email)
             return result.rows[0];
         } catch (error) {
             console.error('Error fetching customers by ID:', error);

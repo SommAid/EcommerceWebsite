@@ -18,7 +18,7 @@ export const POST = async (request: NextRequest) => {
     const newUser = {
       name,
       email,
-      password: hashedPassword,
+      password: password,
     };
 
     // Save the new user to the database
