@@ -1,8 +1,8 @@
 import { auth } from '@/lib/auth'
 import dbConnect from '@/lib/dbConnect'
-import OrderModel, { OrderItem } from '@/lib/models/OrderModel' // TODO
-import ProductModel from '@/lib/models/ProductModel' //TODO
+const client = require('../postgres');
 import { round2 } from '@/lib/utils'
+import OrderModel, { OrderItem } from '@/lib/models/OrderModel'
 
 const calcPrices = (orderItems: OrderItem[]) => {
   // Calculate the items price
@@ -27,50 +27,60 @@ export const POST = auth(async (req: any) => {
       }
     )
   }
-  const { user } = req.auth
+  const { user } = req.auth;
   try {
-    const payload = await req.json()
-    //await dbConnect() TODO
-    const dbProductPrices = await ProductModel.find(
-      {
-        _id: { $in: payload.items.map((x: { _id: string }) => x._id) },
-      },
-      'price'
-    )
-    const dbOrderItems = payload.items.map((x: { _id: string }) => ({
-      ...x,
-      product: x._id,
-      price: dbProductPrices.find((x) => x._id === x._id).price,
-      _id: undefined,
-    }))
+    const payload = await req.json();
 
-    const { itemsPrice, taxPrice, shippingPrice, totalPrice } =
-      calcPrices(dbOrderItems)
+    // Fetch prices of products from the database
+    const productIds = payload.items.map((x: any) => x._id);
+    const queryText = 'SELECT _id, price FROM products WHERE _id = ANY($1)';
+    const { rows: dbProductPrices } = await client.query(queryText, [productIds]);
+    client.release();
 
-    const newOrder = new OrderModel({
-      items: dbOrderItems,
+    // Create order items with prices fetched from the database
+    const dbOrderItems = payload.items.map((item: any) => {
+      const dbProduct = dbProductPrices.find((product: any) => product._id === item._id);
+      return {
+        ...item,
+        product: item._id,
+        price: dbProduct ? dbProduct.price : 0, // Set price to 0 if product not found
+      };
+    });
+
+    // Calculate prices for the order
+    const { itemsPrice, taxPrice, shippingPrice, totalPrice } = calcPrices(dbOrderItems);
+
+    // Insert the new order into the database
+    const insertOrderQuery = `
+      INSERT INTO orders (items, items_price, tax_price, shipping_price, total_price, shipping_address, payment_method, user_id)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      RETURNING *;
+    `;
+    const { rows: [createdOrder] } = await client.query(insertOrderQuery, [
+      JSON.stringify(dbOrderItems),
       itemsPrice,
       taxPrice,
       shippingPrice,
       totalPrice,
-      shippingAddress: payload.shippingAddress,
-      paymentMethod: payload.paymentMethod,
-      user: user._id,
-    })
+      JSON.stringify(payload.shippingAddress),
+      payload.paymentMethod,
+      user._id,
+    ]);
+    client.release();
 
-    const createdOrder = await newOrder.save()
     return Response.json(
       { message: 'Order has been created', order: createdOrder },
       {
         status: 201,
       }
-    )
+    );
   } catch (err: any) {
+    console.error('Error creating order:', err);
     return Response.json(
-      { message: err.message },
+      { message: 'An error occurred while creating the order' },
       {
         status: 500,
       }
-    )
+    );
   }
-}) as any
+}) as any;

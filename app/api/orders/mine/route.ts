@@ -1,5 +1,5 @@
 import dbConnect from '@/lib/dbConnect'
-import OrderModel from '@/lib/models/OrderModel'
+const client = require('../postgres');
 import { auth } from '@/lib/auth'
 
 export const GET = auth(async (req: any) => {
@@ -11,8 +11,19 @@ export const GET = auth(async (req: any) => {
       }
     )
   }
-  const { user } = req.auth
-  // await dbConnect() TODO
-  const orders = await OrderModel.find({ user: user._id })
-  return Response.json(orders)
-}) as any
+  const { user } = req.auth;
+  try {
+    const queryText = 'SELECT * FROM orders WHERE user_id = $1';
+    const { rows: orders } = await client.query(queryText, [user._id]);
+    client.release();
+    return Response.json(orders);
+  } catch (error) {
+    console.error('Error retrieving orders:', error);
+    return Response.json(
+      { message: 'An error occurred while retrieving the orders' },
+      {
+        status: 500,
+      }
+    );
+  }
+}) as any;
