@@ -1,14 +1,17 @@
 import dbConnect from '@/lib/dbConnect'
 import ProductModel from '@/lib/models/ProductModel'
-const client = require('../postgres');
+import { NextResponse } from 'next/server';
+const client = require('../../../../lib/postgres');
 
 export const GET = async (req: any) => {
     try {
 
-      const queryText = 'SELECT DISTINCT category FROM products';
+      const queryText = 'SELECT DISTINCT category FROM product';
       const { rows: categories } = await client.query(queryText);
-      client.release();
-      return Response.json(categories);
+      console.log(categories);
+      const newcatories = categories.map(row =>(row['category']));
+      console.log(newcatories);
+      return NextResponse.json(newcatories);
     } catch (error) {
       console.error('Error retrieving categories:', error);
       return Response.json(

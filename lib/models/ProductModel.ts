@@ -9,37 +9,59 @@ const client = require('../postgres');
 // export default ProductModel
 
 
-  const fetchDataFromDB = async () => {
-    try {
-        console.log("Connected to DB")
+const ProductModel = {
+    fetchDataFromDB: async () => {
+        try {
+            console.log("Connected to DB")
+    
+            const result = await client.query("SELECT * FROM product")
+            const data = result.rows.map(row => ({
+                name: row.name,
+                slug: row.slug,
+                category: row.category,
+                image: row.image,
+                price: row.price,
+                brand: row.brand,
+                rating: row.rating,
+                numReviews: row.numreviews,
+                countInStock: row.countinstock,
+                description: row.description,
+                isFeatured: row.isfeatured,
+                banner: row.banner
+            }));
+            console.log("Fetched data:", data)
+    
+            //client.release(); // release the client back to the pool
+            return data;
+        } catch(error) {
+            console.error("Error fetching data:", error)
+            throw error
+        }
+    },
 
-        const result = await client.query("SELECT * FROM product")
-        const data = result.rows.map(row => ({
-            name: row.name,
-            slug: row.slug,
-            category: row.category,
-            image: row.image,
-            price: row.price,
-            brand: row.brand,
-            rating: row.rating,
-            numReviews: row.numreviews,
-            countInStock: row.countinstock,
-            description: row.description,
-            isFeatured: row.isfeatured,
-            banner: row.banner
-        }));
-        console.log("Fetched data:", data)
+    find: async () => {
+        try {
+            const query = 'SELECT DISTINCT category FROM product';
+            const result = await client.query(query);
+            return result.rows[0];
+        } catch (error) {
+            console.error('Error fetching product by ID:', error);
+            throw error;
+        }
+    },
 
-        //client.release(); // release the client back to the pool
-        return data;
-    } catch(error) {
-        console.error("Error fetching data:", error)
-        throw error
+    find1: async (category) => {
+        try {
+            const query = 'SELECT * FROM product WHERE category = $1';
+            const result = await client.query(query, [category['category']]);
+            console.log(category)
+            return result.rows[0];
+        } catch (error) {
+            console.error('Error fetching product by ID:', error);
+            throw error;
+        }
     }
-}
-
-
- const ProductModel =  fetchDataFromDB()
+} 
 export default ProductModel
 
 export type Product = {

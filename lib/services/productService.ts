@@ -97,41 +97,28 @@ const getByQuery = cache(
         ? { rating: -1 }
         : { _id: -1 }
 
-    const categories = await ProductModel.find().distinct('category')
+    const categories = await ProductModel.find()
     const products = await ProductModel.find(
-      {
-        ...queryFilter,
-        ...categoryFilter,
-        ...priceFilter,
-        ...ratingFilter,
-      },
-      '-reviews'
     )
-      .sort(order)
-      .skip(PAGE_SIZE * (Number(page) - 1))
-      .limit(PAGE_SIZE)
-      .lean()
-
-    const countProducts = await ProductModel.countDocuments({
-      ...queryFilter,
-      ...categoryFilter,
-      ...priceFilter,
-      ...ratingFilter,
-    })
+    // const countProducts = await ProductModel.countDocuments({
+    //   ...queryFilter,
+    //   ...categoryFilter,
+    //   ...priceFilter,
+    //   ...ratingFilter,
+    // })
 
     return {
       products: products as Product[],
-      countProducts,
       page,
-      pages: Math.ceil(countProducts / PAGE_SIZE),
+      pages: Math.ceil(PAGE_SIZE),
       categories,
     }
   }
 )
 
-const getCategories = cache(async () => {
+const getCategories = cache(async (category) => {
   await dbConnect()
-  const categories = await ProductModel.find().distinct('category')
+  const categories = await ProductModel.find()
   return categories
 })
 

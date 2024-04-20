@@ -92,7 +92,7 @@ export default async function SearchPage({
     if (s) params.sort = s
     return `/search?${new URLSearchParams(params).toString()}`
   }
-  const categories = await productServices.getCategories()
+  const categories = await productServices.getCategories();
   const { countProducts, products, pages } = await productServices.getByQuery({
     category,
     q,

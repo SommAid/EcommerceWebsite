@@ -8,7 +8,6 @@ export const SearchBox = () => {
   const category = searchParams.get('category') || 'All'
 
   const { data: categories, error } = useSWR('/api/products/categories')
-
   if (error) return error.message
   if (!categories) return 'Loading...'
 
