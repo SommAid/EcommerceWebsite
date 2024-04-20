@@ -1,5 +1,5 @@
 import dbConnect from '@/lib/dbConnect'
-const client = require('../postgres');
+const client = require('../../../../lib/postgres');
 import { auth } from '@/lib/auth'
 
 export const GET = auth(async (req: any) => {
@@ -13,7 +13,7 @@ export const GET = auth(async (req: any) => {
   }
   const { user } = req.auth;
   try {
-    const queryText = 'SELECT * FROM orders WHERE user_id = $1';
+    const queryText = 'SELECT * FROM orders WHERE customer_id = $1';
     const { rows: orders } = await client.query(queryText, [user._id]);
     client.release();
     return Response.json(orders);

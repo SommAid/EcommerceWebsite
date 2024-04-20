@@ -1,5 +1,5 @@
-import dbConnect from '@/lib/dbConnect'
-const client = require('../postgres');
+
+const client = require('../../../../lib/postgres');
 import { auth } from '@/lib/auth'
 
 export const GET = auth(async (...request: any) => {
