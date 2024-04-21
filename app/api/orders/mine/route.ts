@@ -12,6 +12,7 @@ export const GET = auth(async (req: any) => {
     )
   }
   const { user } = req.auth;
+  console.log("maeasd", user);
   try {
     const queryText = 'SELECT * FROM orders WHERE customer_id = $1';
     const { rows: orders } = await client.query(queryText, [user._id]);

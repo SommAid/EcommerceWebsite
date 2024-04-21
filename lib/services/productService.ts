@@ -1,8 +1,8 @@
 import { cache } from 'react'
 import dbConnect from '@/lib/dbConnect'
 import ProductModel, { Product } from '@/lib/models/ProductModel'
-const client = require('../postgres');
-
+//const client = require('../postgres');
+import pool from '../dbhandler';
 export const revalidate = 3600
 
 // Define SQL queries
@@ -25,19 +25,23 @@ const SQL_GET_BY_SLUG = `
 
 // Define functions to execute SQL queries
 async function getLatest() {
-    await dbConnect();
+    //await dbConnect();
+    const client = await pool.connect();
     const { rows } = await client.query(SQL_GET_LATEST);
     return rows;
   }
   
   async function getFeatured() {
-    await dbConnect();
+    //await dbConnect();
+
+    const client = await pool.connect();
     const { rows } = await client.query(SQL_GET_FEATURED);
     return rows;
   }
   
   async function getBySlug(slug) {
     await dbConnect();
+    const client = await pool.connect();
     const { rows } = await client.query(SQL_GET_BY_SLUG, [slug]);
     return rows[0]; // Return the first result (if any)
   }

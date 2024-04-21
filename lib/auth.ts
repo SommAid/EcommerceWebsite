@@ -4,6 +4,7 @@ import UserModel from "./models/UserModel";
 import bcrypt from 'bcryptjs'
 import NextAuth from "next-auth";
 const client = require('./postgres');
+import pool from "./dbhandler";
 
 export const config = {
     providers: [
@@ -47,11 +48,13 @@ export const config = {
                 /\/admin/,
             ]
             const { pathname } = request.nextUrl
+            console.log('"if tru', pathname);
             if (protectedPaths.some((p) => p.test(pathname))) return !!auth
             return true
         },
         async jwt({user, trigger, session, token}: any) {
             if (user) {
+                console.log("poiui", user);
                 token.user = {
                     _id: user.customer_id,
                     email: user.email,
