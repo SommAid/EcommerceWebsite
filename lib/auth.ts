@@ -35,10 +35,6 @@ export const config = {
 
 
                 if (user){
-                    // const isMatch = await bcrypt.compare(
-                    //     credentials.password as string,
-                    //     temp.password
-                    // )
                     const isMatch = credentials.password ==  temp['password'];
                     if (isMatch){
                         return temp;

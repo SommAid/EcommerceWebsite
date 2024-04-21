@@ -22,7 +22,7 @@ export const POST = auth(async (req: any) => {
     const payload = await req.json()
     console.log("USER: ", user);
 
-    const temp = await UserModel.findAll({
+    const user_info = await UserModel.findOne({
       where: {
         email: user.email
       }
@@ -45,7 +45,7 @@ export const POST = auth(async (req: any) => {
       totalPrice,
       shippingAddress: JSON.stringify(payload.shippingAddress),
       paymentMethod: payload.paymentMethod,
-      user: user._id,
+      user_id: user_info?.dataValues.user_id,
     });
 
     const most_recent_order = await OrderModel.findOne({
@@ -57,8 +57,7 @@ export const POST = auth(async (req: any) => {
 
     return Response.json(
       { message: 'Order has been created', order: newOrder, order_id },
-      {
-        status: 201,
+      {       status: 201,
       }
     )
   } catch (err: any) {

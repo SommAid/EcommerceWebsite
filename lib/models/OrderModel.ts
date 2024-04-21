@@ -53,6 +53,12 @@ const { Sequelize, DataTypes } = require('sequelize');
 const OrderModel = sequelize.define('Order', {
     order_id: {
         type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     items: {
         type: DataTypes.STRING,
