@@ -5,13 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bb212d0-63a9-428b-bf95-43c6cbf2a64c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/admin/dashboard/Dashboard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/dashboard/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/orders/Orders.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/orders/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/products/Products.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/products/[id]/Form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/products/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/products/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/users/Users.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/users/[id]/Form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/users/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/admin/users/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/admin/orders/[id]/deliver/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/admin/orders/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/admin/orders/summary/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/admin/products/[id]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/admin/products/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/admin/users/[id]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/admin/users/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/users/[id]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/users/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/admin/AdminLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth/register/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/register/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/orders/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/orders/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/OrderModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/OrderModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/UserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/UserModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/ProductModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/ProductModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,26 +42,36 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2dmh87rSLhZWh4juSGAqkGmOifQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/henoc/projects/EcommerceWebsite",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\henoc\\projects\\EcommerceWebsite\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/henoc/projects/EcommerceWebsite/components&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\henoc\\projects\\EcommerceWebsite\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\henoc\projects\EcommerceWebsite\components" />
+      <recent name="C:\Users\henoc\projects\EcommerceWebsite\app\api" />
+      <recent name="C:\Users\henoc\projects\EcommerceWebsite\app" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -52,7 +82,8 @@
       <updated>1710618999012</updated>
       <workItem from="1710619000067" duration="22758000" />
       <workItem from="1710702607968" duration="1122000" />
-      <workItem from="1713653497650" duration="32376000" />
+      <workItem from="1713653497650" duration="34126000" />
+      <workItem from="1713729835863" duration="10931000" />
     </task>
     <servers />
   </component>
@@ -64,7 +95,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/api/admin/orders/route.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

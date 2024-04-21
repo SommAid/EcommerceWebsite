@@ -7,6 +7,11 @@ import sequelize from "../postgres";
 
 // Define the Product model
 const ProductModel = sequelize.define('Product', {
+id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+},
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -14,7 +19,7 @@ const ProductModel = sequelize.define('Product', {
   },
   slug: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     unique: true,
   },
   category: {
@@ -78,7 +83,7 @@ export type Product = {
     price: number
     brand: string
     description: string
-    category: string 
+    category: string
     rating: number
     numReviews: number
     countInStock: number
