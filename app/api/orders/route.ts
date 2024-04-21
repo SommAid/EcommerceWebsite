@@ -1,22 +1,12 @@
 import { auth } from '@/lib/auth'
 import dbConnect from '@/lib/dbConnect'
-import OrderModel, { OrderItem } from '@/lib/models/OrderModel' // TODO
+import  { OrderItem } from '@/lib/models/OrderModel' // TODO
 import ProductModel from '@/lib/models/ProductModel' //TODO
 import { round2 } from '@/lib/utils'
+import OrderModel from "@/lib/models/OrderModel";
+import UserModel from '@/lib/models/UserModel';
 
-const calcPrices = (orderItems: OrderItem[]) => {
-  // Calculate the items price
-  const itemsPrice = round2(
-    orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
-  )
-  // Calculate the shipping price
-  const shippingPrice = round2(itemsPrice > 100 ? 0 : 10)
-  // Calculate the tax price
-  const taxPrice = round2(Number((0.15 * itemsPrice).toFixed(2)))
-  // Calculate the total price
-  const totalPrice = round2(itemsPrice + shippingPrice + taxPrice)
-  return { itemsPrice, shippingPrice, taxPrice, totalPrice }
-}
+//let OrderModel = require('@/lib/models/OrderModel');
 
 export const POST = auth(async (req: any) => {
   if (!req.auth) {
@@ -30,39 +20,44 @@ export const POST = auth(async (req: any) => {
   const { user } = req.auth
   try {
     const payload = await req.json()
-    //await dbConnect() TODO
-    const dbProductPrices = await ProductModel.find(
-      {
-        _id: { $in: payload.items.map((x: { _id: string }) => x._id) },
-      },
-      'price'
-    )
-    const dbOrderItems = payload.items.map((x: { _id: string }) => ({
-      ...x,
-      product: x._id,
-      price: dbProductPrices.find((x) => x._id === x._id).price,
-      _id: undefined,
-    }))
+    console.log("USER: ", user);
 
-    const { itemsPrice, taxPrice, shippingPrice, totalPrice } =
-      calcPrices(dbOrderItems)
+    const user_info = await UserModel.findOne({
+      where: {
+        email: user.email
+      }
+    });
 
-    const newOrder = new OrderModel({
-      items: dbOrderItems,
+    // Calculate prices for the order
+    const itemsPrice = payload.itemsPrice;
+    const taxPrice = payload.taxPrice;
+    const shippingPrice = payload.shippingPrice;
+    const totalPrice = payload.totalPrice;
+    //const items = JSON.stringify([payload.items.map((x:any) => [x.product_id, x.qty])]);
+    const items = JSON.stringify([payload.items]);
+    console.log("SHIPPING ADDRESS: ", payload.shippingAddress);
+
+    const newOrder = await OrderModel.create({
+      items,
       itemsPrice,
       taxPrice,
       shippingPrice,
       totalPrice,
-      shippingAddress: payload.shippingAddress,
+      shippingAddress: JSON.stringify(payload.shippingAddress),
       paymentMethod: payload.paymentMethod,
-      user: user._id,
-    })
+      user_id: user_info?.dataValues.user_id,
+    });
 
-    const createdOrder = await newOrder.save()
+    const most_recent_order = await OrderModel.findOne({
+      order: [ [ 'order_id', 'DESC' ]],
+    });
+
+    const order_id =  most_recent_order?.dataValues.order_id;
+    //console.log("FindAll: ", temp?.dataValues.order_id);
+
     return Response.json(
-      { message: 'Order has been created', order: createdOrder },
-      {
-        status: 201,
+      { message: 'Order has been created', order: newOrder, order_id },
+      {       status: 201,
       }
     )
   } catch (err: any) {

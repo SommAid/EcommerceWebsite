@@ -31,12 +31,14 @@ import {v4 as uuidv4} from 'uuid'
 const data = {
     users:[
         {
+            user_id: 1,
             name: 'example admin',
             email: 'exampleAdmin@example.com',
             password: bcrypt.hashSync('123456'),
             isAdmin: true,
         },
         {
+            user_id: 2,
             name: 'example user',
             email: 'exampleUser@example.com',
             password: bcrypt.hashSync('123456'),

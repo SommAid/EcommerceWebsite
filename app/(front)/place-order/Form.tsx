@@ -43,7 +43,7 @@ const Form = () => {
       if (res.ok) {
         clear()
         toast.success('Order placed successfully')
-        return router.push(`/order/${data.order._id}`)
+        return router.push(`/order/${data.order_id}`)
       } else {
         toast.error(data.message)
       }

@@ -2,6 +2,8 @@
 // const {Sequelize, Model} = require('sequilize');
 
 import sequelize from "../postgres"
+import Data from "@/lib/data";
+const { Sequelize, DataTypes } = require('sequelize');
 
 // const orderSchema = new sequelize.define(
 //   {
@@ -47,14 +49,61 @@ import sequelize from "../postgres"
 //   }
 // )
 
-const OrderModel = sequelize.models.Order
+
+const OrderModel = sequelize.define('Order', {
+    order_id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    items: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    itemsPrice: {
+        type: DataTypes.NUMBER,
+        allowNull: false
+    },
+    taxPrice: {
+        type: DataTypes.NUMBER,
+        allowNull: false
+    },
+    shippingPrice: {
+        type: DataTypes.NUMBER,
+        allowNull: false
+    },
+    totalPrice: {
+        type: DataTypes.NUMBER,
+        allowNull: false
+    },
+    shippingAddress: {
+        type: DataTypes.STRING,
+    },
+    paymentMethod: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+    },
+})
 
 export default OrderModel
 
 export type Order = {
   _id: string
-  user?: { name: string }
-  items: [OrderItem]
+  items: string,
   shippingAddress: {
     fullName: string
     address: string
@@ -72,7 +121,8 @@ export type Order = {
   isDelivered: boolean
   paidAt?: string
   deliveredAt?: string
-  createdAt: string
+    createdAt: string
+    updatedAt: string
 }
 
 export type OrderItem = {

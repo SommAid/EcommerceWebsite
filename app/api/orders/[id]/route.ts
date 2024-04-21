@@ -13,6 +13,12 @@ export const GET = auth(async (...request: any) => {
     )
   }
   await dbConnect()
-  const order = await OrderModel.findById(params.id)
+  //console.log("ParamsID", request);
+  const order = await OrderModel.findAll({
+    where: {
+      order_id: params.id
+    }
+  });
+  //const order = await OrderModel.findById(params.id)
   return Response.json(order)
 }) as any
