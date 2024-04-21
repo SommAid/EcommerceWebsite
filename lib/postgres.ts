@@ -16,9 +16,8 @@ const client = new Client({
     host: "localhost",
     user: "postgres",
     port: 5432,
-    password: "postgres",
+    password: "password",
     database: "ddd_proj"
 })
 
 module.exports = client
-

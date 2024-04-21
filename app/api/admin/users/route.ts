@@ -18,7 +18,7 @@ export const GET = auth(async (req: any) => {
     const queryText = 'SELECT * FROM users';
     const { rows: users } = await client.query(queryText);
 
-    client.release();
+   // client.release();
 
     return Response.json(users);
   } catch (error) {

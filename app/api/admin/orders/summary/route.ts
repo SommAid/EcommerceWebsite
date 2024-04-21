@@ -70,7 +70,7 @@ export const GET = auth(async (req: any) => {
       client.query(usersDataQuery),
     ]);
 
-    client.release();
+    //client.release();
 
     const ordersCount = parseInt(ordersCountResult.rows[0].count);
     const productsCount = parseInt(productsCountResult.rows[0].count);

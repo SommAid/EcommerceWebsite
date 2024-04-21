@@ -17,7 +17,7 @@ export const GET = auth(async (req: any) => {
     const queryText = 'SELECT * FROM products';
     const { rows: products } = await client.query(queryText);
 
-    client.release();
+    //client.release();
 
     return Response.json(products);
   } catch (error) {
@@ -80,7 +80,7 @@ export const POST = auth(async (req: any) => {
 
     const { rows: [product] } = await client.query(queryText, values);
 
-    client.release();
+    //client.release();
 
     return Response.json({
       message: 'Product created successfully',

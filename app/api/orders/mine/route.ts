@@ -15,7 +15,7 @@ export const GET = auth(async (req: any) => {
   try {
     const queryText = 'SELECT * FROM orders WHERE customer_id = $1';
     const { rows: orders } = await client.query(queryText, [user._id]);
-    client.release();
+   // client.release();
     return Response.json(orders);
   } catch (error) {
     console.error('Error retrieving orders:', error);

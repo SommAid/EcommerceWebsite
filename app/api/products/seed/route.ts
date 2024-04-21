@@ -33,7 +33,7 @@ export const GET = async (request: NextRequest) => {
       }
   
       await client.query('COMMIT');
-      client.release();
+      //client.release();
   
       return NextResponse.json({
         message: 'Seeded successfully',

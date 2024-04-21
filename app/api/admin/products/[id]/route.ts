@@ -62,7 +62,7 @@ export const PUT = auth(async (...args: any) => {
       product.description = description
 
       const updatedProduct = await product.save();
-      client.release();
+      //client.release();
       return Response.json(updatedProduct)
     } else {
       return Response.json(

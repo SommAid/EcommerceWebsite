@@ -19,7 +19,7 @@ export const GET = auth(async (...args: any) => {
     const queryText = 'SELECT * FROM users WHERE id = $1';
     const { rows: [user] } = await client.query(queryText, [params.id]);
 
-    client.release();
+    //client.release();
 
     if (!user) {
       return Response.json(
@@ -77,7 +77,7 @@ export const PUT = auth(async (...args: any) => {
 
     const { rows: [updatedUser] } = await client.query(queryText, values);
 
-    client.release();
+    //client.release();
 
     if (!updatedUser) {
       return Response.json(
@@ -123,7 +123,7 @@ export const DELETE = auth(async (...args: any) => {
 
     const { rows: [deletedUser] } = await client.query(queryText, [params.id]);
 
-    client.release();
+    //client.release();
 
     if (!deletedUser) {
       return Response.json(

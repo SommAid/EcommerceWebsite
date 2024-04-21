@@ -19,7 +19,7 @@ export const PUT = auth(async (...args: any) => {
 
     if (order) {
       if (!order.is_paid) {
-        client.release();
+        //client.release();
         return Response.json(
           { message: 'Order is not paid' },
           {
@@ -32,10 +32,10 @@ export const PUT = auth(async (...args: any) => {
       const values = [true, new Date(), params.id];
       await client.query(updateQueryText, values);
 
-      client.release();
+      //client.release();
       return Response.json(order);
     } else {
-      client.release();
+      //client.release();
       return Response.json(
         { message: 'Order not found' },
         {

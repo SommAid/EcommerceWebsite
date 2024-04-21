@@ -32,9 +32,11 @@ export const POST = auth(async (req: any) => {
     )
   }
   const { user } = req.auth;
-  console.log("email: ", user['email']);
+  console.log("email: ", user);
   try {
-    const user_info = await UserModel.findOne(user['email']);
+    console.log("whatsup", user['email']);
+    const user_info = await UserModel.findOne(user);
+    //console.log("spirit", {email:}user_info)
     const User_ID = user_info['customer_id'];
     console.log("User Info: ", user_info);
 

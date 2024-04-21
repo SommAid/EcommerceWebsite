@@ -9,12 +9,13 @@ export const PUT = auth(async (req) => {
     return Response.json({ message: 'Not authenticated' }, { status: 401 })
   }
   const { user } = req.auth;
+  console.log("something", user);
   const { name, email, password } = await req.json();
   try {
     const queryText = 'SELECT * FROM users WHERE id = $1';
     const { rows: [dbUser] } = await client.query(queryText, [user._id]);
     if (!dbUser) {
-      client.release();
+     // client.release();
       return Response.json(
         { message: 'User not found' },
         {
@@ -30,7 +31,7 @@ export const PUT = auth(async (req) => {
     const updateQueryText = 'UPDATE users SET name = $1, email = $2, password = $3 WHERE id = $4';
     await client.query(updateQueryText, [dbUser.name, dbUser.email, dbUser.password, dbUser.id]);
 
-    client.release();
+    //client.release();
     return Response.json({ message: 'User has been updated' });
   } catch (err) {
     console.error('Error updating user:', err);

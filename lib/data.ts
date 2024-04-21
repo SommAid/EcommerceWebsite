@@ -23,7 +23,7 @@ const fetchDataFromDB = async () => {
         }));
         console.log("Fetched data:", data)
 
-        client.release(); // release the client back to the pool
+       // client.release(); // release the client back to the pool
         return data;
     } catch(error) {
         console.error("Error fetching data:", error)
