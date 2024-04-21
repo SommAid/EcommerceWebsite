@@ -7,6 +7,7 @@ export const POST = async (request: NextRequest) => {
   const { name, email, password } = await request.json()
   // await dbConnect() TODO
   const hashedPassword = await bcrypt.hash(password, 5)
+  // @ts-ignore
   const newUser = new UserModel({
     name,
     email,
