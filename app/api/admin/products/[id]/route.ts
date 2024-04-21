@@ -61,7 +61,8 @@ export const PUT = auth(async (...args: any) => {
       product.countInStock = countInStock
       product.description = description
 
-      const updatedProduct = await product.save()
+      const updatedProduct = await product.save();
+      client.release();
       return Response.json(updatedProduct)
     } else {
       return Response.json(

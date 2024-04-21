@@ -7,5 +7,4 @@ const pool = new Pool({
     password: "password",
     database: "ddd_proj",
 })
-
 export default pool

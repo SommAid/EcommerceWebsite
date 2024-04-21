@@ -8,6 +8,8 @@ import toast from 'react-hot-toast'
 import useSWRMutation from 'swr/mutation'
 import Image from 'next/image'
 
+const x = "hi";
+
 const Form = () => {
   const router = useRouter()
   const {

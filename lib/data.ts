@@ -1,11 +1,11 @@
 import bcrypt from 'bcryptjs'
 import dbConnect from './dbConnect'
 const client = require('./postgres');
-
+import pool from "@/lib/dbhandler";
 const fetchDataFromDB = async () => {
     try {
         console.log("Connected to DB")
-
+        const  client = await pool.connect();
         const result = await client.query("SELECT * FROM public.items")
         const data = result.rows.map(row => ({
             name: row.name,

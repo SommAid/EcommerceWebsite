@@ -1,4 +1,3 @@
-
 const client = require('../../../../lib/postgres');
 import { auth } from '@/lib/auth'
 
@@ -14,8 +13,10 @@ export const GET = auth(async (...request: any) => {
   }
 
   try {
-    const { rows } = await client.query('SELECT * FROM orders WHERE id = $1', [params.id]);
+    console.log("GODDDDDDDDDDDDDDDDDD: ",params);
+    const { rows } = await client.query('SELECT * FROM orders WHERE order_id = $1', [params.id]);
     const order = rows[0];
+    console.log("HELLLLLLLLLLLLLLL ",order);
     return Response.json(order);
   } catch (error) {
     console.error('Error retrieving order:', error);
