@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bb212d0-63a9-428b-bf95-43c6cbf2a64c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(front)/place-order/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(front)/place-order/Form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/orders/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/orders/[id]/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/orders/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/orders/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/OrderModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/OrderModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/ProductModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/ProductModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/postgres.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/postgres.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +50,7 @@
       <updated>1710618999012</updated>
       <workItem from="1710619000067" duration="22758000" />
       <workItem from="1710702607968" duration="1122000" />
-      <workItem from="1713653497650" duration="20384000" />
+      <workItem from="1713653497650" duration="23053000" />
     </task>
     <servers />
   </component>

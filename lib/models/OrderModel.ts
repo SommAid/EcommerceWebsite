@@ -51,6 +51,9 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 
 const OrderModel = sequelize.define('Order', {
+    order_id: {
+        type: DataTypes.INTEGER,
+    },
     items: {
         type: DataTypes.STRING,
         allowNull: false,

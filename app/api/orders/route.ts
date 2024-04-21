@@ -25,9 +25,10 @@ export const POST = auth(async (req: any) => {
     const taxPrice = payload.taxPrice;
     const shippingPrice = payload.shippingPrice;
     const totalPrice = payload.totalPrice;
+    const items = JSON.stringify([payload.items.map((x:any) => [x.product_id, x.qty])]);
 
     const newOrder = await OrderModel.create({
-      items: JSON.stringify([payload.items.map((x:any) => [x.product_id, x.qty])]),
+      items,
       itemsPrice,
       taxPrice,
       shippingPrice,
@@ -37,8 +38,17 @@ export const POST = auth(async (req: any) => {
       user: user._id,
     });
 
+
+
+    const temp = await OrderModel.findOne({
+      order: [ [ 'order_id', 'DESC' ]],
+    });
+
+    const order_id =  temp?.dataValues.order_id;
+    //console.log("FindAll: ", temp?.dataValues.order_id);
+
     return Response.json(
-      { message: 'Order has been created', order: newOrder },
+      { message: 'Order has been created', order: newOrder, order_id },
       {
         status: 201,
       }
