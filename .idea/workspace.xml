@@ -7,9 +7,6 @@
     <list default="true" id="2bb212d0-63a9-428b-bf95-43c6cbf2a64c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(front)/product/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(front)/product/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/users/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users/Users.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/products/seed/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/products/seed/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

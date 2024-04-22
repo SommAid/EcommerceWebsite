@@ -21,10 +21,10 @@ export default async function ProductDetails({
     }
 
     await dbConnect()
-
-    const warehouseLocation = await sequelize.query('Select warehouse.address From "Products" inner join warehouse on "Products".id = warehouse.product_id',{raw:true});
-    // @ts-ignore
-    console.log(warehouseLocation[0][0]['address'])
+    //
+    // const warehouseLocation = await sequelize.query('Select warehouse.address From "Products" inner join warehouse on "Products".id = warehouse.product_id',{raw:true});
+    // // @ts-ignore
+    // console.log(warehouseLocation[0][0]['address'])
 
 
     return (<>
@@ -75,7 +75,7 @@ export default async function ProductDetails({
                         {
                             <div className="mb-2 flex justify-between">
                                 <div>Warehouse Location</div>
-                                <div>{warehouseLocation[0][0]['address']}</div>
+                                <div>{"1892 Warehouse Avenue"}</div>
                             </div>
                         }
                         {/*                    <div className="card-actions justify-center">
