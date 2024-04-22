@@ -26,6 +26,26 @@ const UserModel = sequelize.define('User', {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  address: {
+    type: DataTypes.STRING,
+    defaultValue: false,
+  },
+  payment: {
+    type: DataTypes.STRING,
+    defaultValue: false,
+  },
+  title: {
+    type: DataTypes.STRING,
+    defaultValue: false,
+  },
+  salary: {
+    type: DataTypes.NUMBER,
+    defaultValue: false,
+  },
+  balance: {
+    type: DataTypes.NUMBER,
+    defaultValue: false,
+  },
 }, {
   timestamps: true, // Enable timestamps (createdAt and updatedAt)
 });
@@ -48,20 +68,3 @@ export type User = {
   email: string
   isAdmin: boolean
 }
-
-// import sequelize from "../postgres";
-// const {  Sequelize } = require('sequelize');
-
-
-// const UserSchema = sequelize.define('UserSchema',{
-//     name: {type: Sequelize.STRING, allowNull: false},
-//     email: {type: Sequelize.STRING, allowNull: false, unique:true},
-//     password: {type: Sequelize.STRING, allowNull: false},
-//     isAdmin: {type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false},
-// },
-// { timestamps: true }
-// )
-
-// const UserModel = sequelize.models?.User || sequelize.model('UserSchema')
-
-// export default UserModel

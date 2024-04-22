@@ -3,12 +3,15 @@ import data from "@/lib/data";
 import dbConnect from '@/lib/dbConnect';
 import UserModel from '@/lib/models/UserModel';
 import ProductModel from '@/lib/models/ProductModel';
+import OrderModel from "@/lib/models/OrderModel";
+import sequelize from "@/lib/postgres";
 
 export const GET = async (request: NextRequest) => {
   try {
     // Assuming you have data arrays for users and products
     const users = data.users;
     const products = data.products;
+    const orders = data.orders;
 
     // Connect to the database (assuming you have already set up Sequelize connection)
     dbConnect();
@@ -16,10 +19,26 @@ export const GET = async (request: NextRequest) => {
     // Delete existing records
     await UserModel.destroy({ where: {} });
     await ProductModel.destroy({ where: {} });
+    await sequelize.query("CREATE TABLE IF NOT EXISTS \"Orders\" (\n" +
+        "    order_id serial,\n" +
+        "    user_id integer,\n" +
+        "    \"items\" varchar(1000),\n" +
+        "    \"itemsPrice\" numeric(100,2),\n" +
+        "    \"taxPrice\" numeric(100,2),\n" +
+        "    \"shippingPrice\" numeric(100,2),\n" +
+        "    \"totalPrice\" numeric(100,2),\n" +
+        "    \"shippingAddress\" varchar(1000),\n" +
+        "    \"paymentMethod\" varchar(1000),\n" +
+        "    \"createdAt\" date,\n" +
+        "    \"updatedAt\" date,\n" +
+        "    primary key(order_id),\n" +
+        "    foreign key(user_id) references \"Users\"(user_id)\n" +
+        ")");
 
     // Insert new records
     await UserModel.bulkCreate(users);
     await ProductModel.bulkCreate(products);
+
 
     return NextResponse.json({
       message: 'seeded successfully',

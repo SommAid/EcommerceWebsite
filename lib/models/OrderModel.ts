@@ -3,6 +3,8 @@
 
 import sequelize from "../postgres"
 import Data from "@/lib/data";
+import ProductModel from "@/lib/models/ProductModel";
+import UserModel from "@/lib/models/UserModel";
 const { Sequelize, DataTypes } = require('sequelize');
 
 // const orderSchema = new sequelize.define(
@@ -142,3 +144,12 @@ export type ShippingAddress = {
 	postalCode: string
 	country: string
   }
+
+(async () => {
+    try {
+        await OrderModel.sync();
+        console.log('User model synchronized with the database.');
+    } catch (error) {
+        console.error('Error syncing User model:', error);
+    }
+})();

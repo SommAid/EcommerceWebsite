@@ -34,9 +34,9 @@ export default function MyOrders() {
           </tr>
         </thead>
         <tbody>
-          {orders.map((order: Order) => (
-            <tr key={order._id}>
-              <td>{order._id.substring(20, 24)}</td>
+          {orders.map((order: any) => (
+            <tr key={order.order_id}>
+              <td>{order.order_id}</td>
               <td>{order.createdAt.substring(0, 10)}</td>
               <td>${order.totalPrice}</td>
               <td>
@@ -50,7 +50,7 @@ export default function MyOrders() {
                   : 'not delivered'}
               </td>
               <td>
-                <Link href={`/order/${order._id}`} passHref>
+                <Link href={`/order/${order.order_id}`} passHref>
                   Details
                 </Link>
               </td>

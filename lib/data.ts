@@ -36,6 +36,11 @@ const data = {
             email: 'exampleAdmin@example.com',
             password: '12345',
             isAdmin: true,
+            address: "temp location",
+            payment: "0000000",
+            title: "Owner",
+            salary: 50000,
+            balance: 1000
         },
         {
             user_id: 2,
@@ -43,6 +48,17 @@ const data = {
             email: 'exampleUser@example.com',
             password: 'Hallow',
             isAdmin: false,
+            address: "temp location",
+            payment: "0000000",
+            title: "Consumer",
+            salary: 0,
+            balance: 1000
+        }
+    ],
+
+    orders: [
+        {
+
         }
     ],
 

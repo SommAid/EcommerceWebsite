@@ -8,10 +8,14 @@ export const PUT = auth(async (req) => {
     return Response.json({ message: 'Not authenticated' }, { status: 401 })
   }
   const { user } = req.auth
-  const { name, email, password } = await req.json()
+  const { name, email, password, address, payment } = await req.json()
   // await dbConnect() TODO
   try {
-    const dbUser = await UserModel.findById(user._id)
+    const dbUser = await UserModel.findOne({
+      where: {
+        email: user.email,
+      }
+    });
     if (!dbUser) {
       return Response.json(
         { message: 'User not found' },
@@ -20,12 +24,18 @@ export const PUT = auth(async (req) => {
         }
       )
     }
-    dbUser.name = name
-    dbUser.email = email
-    dbUser.password = password
-      ? await bcrypt.hash(password, 5)
-      : dbUser.password
-    await dbUser.save()
+
+    console.log("ADDRESSSS: ", address);
+    await dbUser.update({
+      name: name ? name : dbUser.dataValues.name,
+      email: email ? email : dbUser.dataValues.email,
+      address: address ? address : dbUser.dataValues.address,
+      payment: payment ? payment : dbUser.dataValues.payment,
+      password: password ? password : dbUser.dataValues.password,
+      isAdmin: user.isAdmin
+    });
+
+    await dbUser.save();
     return Response.json({ message: 'User has been updated' })
   } catch (err: any) {
     return Response.json(

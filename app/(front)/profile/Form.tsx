@@ -8,6 +8,8 @@ import toast from 'react-hot-toast'
 type Inputs = {
   name: string
   email: string
+  address: string
+  payment: string
   password: string
   confirmPassword: string
 }
@@ -27,6 +29,8 @@ const Form = () => {
       name: '',
       email: '',
       password: '',
+      address: '',
+      payment: ''
     },
   })
 
@@ -38,7 +42,7 @@ const Form = () => {
   }, [router, session, setValue])
 
   const formSubmit: SubmitHandler<Inputs> = async (form) => {
-    const { name, email, password } = form
+    const { name, email, password, address, payment } = form
     try {
       const res = await fetch('/api/auth/profile', {
         method: 'PUT',
@@ -49,6 +53,8 @@ const Form = () => {
           name,
           email,
           password,
+          address,
+          payment
         }),
       })
       if (res.status === 200) {
@@ -115,6 +121,31 @@ const Form = () => {
               <div className="text-error">{errors.email.message}</div>
             )}
           </div>
+
+          <div className="my-2">
+            <label className="label" htmlFor="email">
+              Shipping Address
+            </label>
+            <input
+                type="text"
+                id="address"
+                {...register('address', {})}
+                className="input input-bordered w-full max-w-sm"
+            />
+          </div>
+
+          <div className="my-2">
+            <label className="label" htmlFor="email">
+              Payment Information
+            </label>
+            <input
+                type="text"
+                id="payment"
+                {...register('payment', {})}
+                className="input input-bordered w-full max-w-sm"
+            />
+          </div>
+
           <div className="my-2">
             <label className="label" htmlFor="password">
               New Password

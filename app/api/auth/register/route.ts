@@ -8,13 +8,18 @@ export const POST = async (request: NextRequest) => {
   // await dbConnect() TODO
   //const hashedPassword = await bcrypt.hash(password, 5)
   // @ts-ignore
-  const newUser = new UserModel({
+  await UserModel.create({
     name,
     email,
-    password: password,
+    password,
+    isAdmin: false,
+    salary: 0,
+    balance: 0,
+    address: "",
+    payment: "",
+    title: "Consumer",
   })
   try {
-    await newUser.save()
     return Response.json(
       { message: 'User has been created' },
       {
