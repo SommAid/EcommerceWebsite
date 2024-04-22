@@ -1,7 +1,8 @@
 import * as pg from 'pg';
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize("ddd_proj", "postgres", "postgres", {
+const ruk = 'password';
+const sequelize = new Sequelize("ddd_proj", "postgres", ruk, {
     host: "localhost", 
     dialect: 'postgres',
     dialectModule: pg,

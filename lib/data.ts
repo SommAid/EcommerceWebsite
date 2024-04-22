@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import {v4 as uuidv4} from 'uuid'
+//import {v4 as uuidv4} from 'uuid'
 
 
 // const fetchDataFromDB = cache(async () => {
@@ -64,7 +64,7 @@ const data = {
         },
         {
             name: 'Basketball shoes',
-            slug: 'shoes-shoes',
+            slug: 'shoes-shoes1',
             category: "Footrwear",
             image: '/images/basket_shoes.jpeg',
             price: 30,
@@ -78,7 +78,7 @@ const data = {
         },
         {
             name: 'brown jacket',
-            slug: 'jacket-jacket',
+            slug: 'jacket-jacket1',
             category: "jacket",
             image: '/images/brown_jacket.avif',
             price: 89,
@@ -92,7 +92,7 @@ const data = {
         },
         {
             name: 'cargo pants',
-            slug: 'pants-pants',
+            slug: 'pants-pants2',
             category: "pants",
             image: '/images/cargo_pants.webp',
             price: 14,
@@ -106,7 +106,7 @@ const data = {
         },
         {
             name: 'cool mens hoodie',
-            slug: 'hoodie-hoodie',
+            slug: 'hoodie-hoodie3',
             category: "hoodie",
             image: '/images/men_hoodie.webp',
             price: 130,
@@ -120,7 +120,7 @@ const data = {
         },
         {
             name: 'womens hoodie',
-            slug: 'hoodie-hoodie',
+            slug: 'hoodie-hoodie4',
             category: "hoodie",
             image: '/images/women_hoodie.jpg',
             price: 102,
@@ -134,7 +134,7 @@ const data = {
         },
         {
             name: 'cool sports shoes',
-            slug: 'shoes-shoes',
+            slug: 'shoes-shoes5',
             category: "Footwear",
             image: '/images/sport_shoes.jpg',
             price: 50,
