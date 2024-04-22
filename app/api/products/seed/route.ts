@@ -39,7 +39,6 @@ export const GET = async (request: NextRequest) => {
     await UserModel.bulkCreate(users);
     await ProductModel.bulkCreate(products);
 
-
     return NextResponse.json({
       message: 'seeded successfully',
       users,

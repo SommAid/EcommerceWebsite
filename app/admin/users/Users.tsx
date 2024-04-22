@@ -43,6 +43,8 @@ export default function Users() {
               <th>id</th>
               <th>name</th>
               <th>email</th>
+                <th>title</th>
+                <th>salary</th>
               <th>admin</th>
               <th>actions</th>
             </tr>
@@ -53,6 +55,8 @@ export default function Users() {
                 <td>{user.user_id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                <td>{user.title}</td>
+                <td>{user.salary != 0 ? user.salary : ""}</td>
                 <td>{user.isAdmin ? 'YES' : 'NO'}</td>
 
                 <td>

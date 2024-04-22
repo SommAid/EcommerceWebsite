@@ -6,18 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2bb212d0-63a9-428b-bf95-43c6cbf2a64c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(front)/order-history/MyOrders.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(front)/order-history/MyOrders.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(front)/profile/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(front)/profile/Form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(front)/profile/prage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(front)/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth/profile/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/profile/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth/register/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/register/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/orders/mine/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/orders/mine/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(front)/product/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(front)/product/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/users/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users/Users.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/products/seed/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/products/seed/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/Menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/OrderModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/OrderModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/UserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/UserModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/postgres.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/postgres.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
