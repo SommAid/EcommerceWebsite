@@ -28,23 +28,23 @@ const UserModel = sequelize.define('User', {
   },
   address: {
     type: DataTypes.STRING,
-    defaultValue: false,
+    allowNull: false,
   },
   payment: {
     type: DataTypes.STRING,
-    defaultValue: false,
+    allowNull: false,
   },
   title: {
     type: DataTypes.STRING,
-    defaultValue: false,
+    allowNull: false,
   },
   salary: {
-    type: DataTypes.NUMBER,
-    defaultValue: false,
+    type: DataTypes.FLOAT,
+    defaultValue: 0.0,
   },
   balance: {
-    type: DataTypes.NUMBER,
-    defaultValue: false,
+    type: DataTypes.FLOAT,
+    defaultValue: 0.0,
   },
 }, {
   timestamps: true, // Enable timestamps (createdAt and updatedAt)
