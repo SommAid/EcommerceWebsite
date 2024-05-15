@@ -106,7 +106,7 @@ export default function ProductEditForm({ productId }: { productId: string }) {
         {
           method: 'POST',
           body: formData,
-        }
+        }  
       )
       const data = await res.json()
       setValue('image', data.secure_url)
@@ -141,6 +141,20 @@ export default function ProductEditForm({ productId }: { productId: string }) {
               />
             </div>
           </div>
+          <FormInput name="banner" id="banner" required />
+          <div className="md:flex mb-6">
+            <label className="label md:w-1/5" htmlFor="imageFile">
+              Upload Banner
+            </label>
+            <div className="md:w-4/5">
+              <input
+                type="file"
+                className="file-input w-full max-w-md"
+                id="imageFile"
+                onChange={uploadHandler}
+              />
+            </div>
+          </div>
           <FormInput name="Price" id="price" required />
           <FormInput name="Category" id="category" required />
           <FormInput name="Brand" id="brand" required />
@@ -155,7 +169,7 @@ export default function ProductEditForm({ productId }: { productId: string }) {
             {isUpdating && <span className="loading loading-spinner"></span>}
             Update
           </button>
-          <Link className="btn ml-4 " href="/admin/products">
+          <Link className="btn ml-4" href="/admin/products">
             Cancel
           </Link>
         </form>
@@ -163,3 +177,4 @@ export default function ProductEditForm({ productId }: { productId: string }) {
     </div>
   )
 }
+
